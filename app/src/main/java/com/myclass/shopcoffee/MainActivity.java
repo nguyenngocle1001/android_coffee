@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     public static SQLiteDatabase _DATABASE;
 
     CheckBox cbPassword;
-    EditText edtPassword;
+    EditText edtPassword, edtUsername;
 
 
     @Override
@@ -35,10 +35,9 @@ public class MainActivity extends AppCompatActivity {
 
         cbPassword = (CheckBox) findViewById(R.id.cbShowPassword);
         edtPassword = (EditText) findViewById(R.id.edtPassword);
+        edtUsername = (EditText) findViewById(R.id.edtUsername);
 
         _DATABASE = getDatabase();
-
-
     }
 
     public void showPassword(View view) {
@@ -52,9 +51,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        Database.getInstance().count(_DATABASE, Database.getInstance().TBTABLES, this);
-        Intent intent = new Intent(this, activity_choose_table.class);
-        startActivity(intent);
+        if(isLogin(edtUsername.getText().toString().trim(), edtPassword.getText().toString().trim())){
+            Toast.makeText(this, "Login successfuly", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, activity_choose_table.class);
+            startActivity(intent);
+        }else {
+            Toast.makeText(this, "Sai thông tin vui lòng kiểm tra lại", Toast.LENGTH_SHORT).show();
+            edtUsername.setFocusable(true);
+        }
+
     }
 
     //GET DATABASE
@@ -97,16 +102,6 @@ public class MainActivity extends AppCompatActivity {
         return database;
     }
 
-    public void insertValuesAnyTable(SQLiteDatabase database, ArrayList<ContentValues> listContentValues, String tableName) {
-        try {
-            for (ContentValues value : listContentValues) {
-                database.insert(tableName, null, value);
-            }
-        } catch (Exception e) {
-            Toast.makeText(this, "Lỗi dữ liệu", Toast.LENGTH_SHORT).show();
-        }
-    }
-
     public boolean isTableExists(SQLiteDatabase database, String tableName) {
         Cursor cursor = database.rawQuery("select DISTINCT tbl_name from sqlite_master where tbl_name = '" +
                 tableName + "'", null);
@@ -120,6 +115,10 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
-
-
+    public boolean isLogin(String username, String pass){
+        Cursor cursor = _DATABASE.rawQuery("SELECT * FROM " + Database.getInstance().TBUSERS
+                + " where User_Name = '"+username+"' and User_Pass = '"+pass+"'", null);
+        cursor.moveToFirst();
+        return cursor.getCount()>0 ? true : false;
+    }
 }
