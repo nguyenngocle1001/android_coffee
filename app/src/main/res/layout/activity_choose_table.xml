@@ -55,6 +55,7 @@
         android:text="Lọc"
         android:layout_marginTop="20dp"
         android:layout_gravity="center"
+        android:onClick="Filter"
         />
 
     <GridView

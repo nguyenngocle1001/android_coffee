@@ -4,26 +4,24 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class activity_choose_table extends AppCompatActivity {
 
     private GridView gridView;
-    private final int numberTable = 10;
-
     private RadioGroup rgFilter;
-    int[] tableId = {1};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,43 +33,17 @@ public class activity_choose_table extends AppCompatActivity {
         actionBar.setHomeAsUpIndicator(R.drawable.back_icon);
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.BLACK));
 
-
-        ArrayList<Table> listTable = new ArrayList<Table>();
-        for(int i = 0; i<numberTable; i++){
-            listTable.add( new Table(i + 1, false));
-        }
+        ArrayList<Table> listTable = loadTable();
 
         TableAdapter tableAdapter = new TableAdapter(listTable);
 
-        gridView = (GridView)findViewById(R.id.gridView);
+        gridView = (GridView) findViewById(R.id.gridView);
         gridView.setAdapter(tableAdapter);
 
         rgFilter = (RadioGroup) findViewById(R.id.rgFilter);
         rgFilter.check(R.id.rbAll);
+
     }
-    public class CusAdapter extends BaseAdapter{
-
-        @Override
-        public int getCount() {
-            return 0;
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            return null;
-        }
-    }
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -82,5 +54,21 @@ public class activity_choose_table extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public ArrayList<Table> loadTable() {
+        ArrayList<Table> listTable = new ArrayList<>();
+        Cursor cursor = MainActivity._DATABASE.query(Database.getInstance().TBTABLES, null, null, null, null, null, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            listTable.add(new Table(cursor.getInt(0), cursor.getInt(1)));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return listTable;
+    }
+
+    public void Filter(View view) {
+
     }
 }
