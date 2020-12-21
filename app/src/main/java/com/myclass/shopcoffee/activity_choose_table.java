@@ -32,7 +32,7 @@ public class activity_choose_table extends AppCompatActivity {
         actionBar.setTitle(Html.fromHtml("<span style='color: #ffffff'>Chọn bàn<span>", Html.FROM_HTML_MODE_COMPACT));
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.back_icon);
-        actionBar.setBackgroundDrawable(new ColorDrawable(Color.BLACK));
+        //actionBar.setBackgroundDrawable(new ColorDrawable(Color.BLACK));
 
         gridView = (GridView) findViewById(R.id.gridView);
         loadList("SELECT * FROM " + Database.getInstance().TBTABLES);
