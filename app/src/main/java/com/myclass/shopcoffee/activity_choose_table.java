@@ -1,21 +1,22 @@
 package com.myclass.shopcoffee;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
@@ -23,6 +24,7 @@ public class activity_choose_table extends AppCompatActivity {
 
     private GridView gridView;
     private RadioGroup rgFilter;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,18 @@ public class activity_choose_table extends AppCompatActivity {
         gridView = (GridView) findViewById(R.id.gridView);
         loadList("SELECT * FROM " + Database.getInstance().TBTABLES);
 
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+
+                final Intent intent;
+                intent = new Intent(activity_choose_table.this, Choose_Food_Activity.class);
+                Choose_Food_Activity.idTable = listTable.get(position).id;
+                startActivity(intent);
+
+            }
+        });
         rgFilter = (RadioGroup) findViewById(R.id.rgFilter);
         rgFilter.check(R.id.rbAll);
     }
