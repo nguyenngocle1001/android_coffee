@@ -9,9 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ShopCoffee">
-        <activity android:name=".Choose_Food_Activity"></activity>
-        <activity android:name=".activity_choose_table" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Choose_Food_Activity"
+            android:label="Chọn món"></activity>
+        <activity android:name=".activity_choose_table"
+            android:label="Chọn bàn"
+            />
+        <activity android:name=".MainActivity"
+            android:label="CỬA HÀNG COFFEE">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
