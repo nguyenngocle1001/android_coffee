@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     CheckBox cbPassword;
     EditText edtPassword, edtUsername;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,18 +50,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        if(isLogin(edtUsername.getText().toString().trim(), edtPassword.getText().toString().trim())){
-            Toast.makeText(this, "Login successfuly", Toast.LENGTH_SHORT).show();
+        if (isLogin(edtUsername.getText().toString(), edtPassword.getText().toString())) {
+            Toast.makeText(this, "Login successfuly ", Toast.LENGTH_SHORT).show();
+
             Intent intent = new Intent(this, activity_choose_table.class);
             startActivity(intent);
-        }else {
+        } else {
             Toast.makeText(this, "Sai thông tin vui lòng kiểm tra lại", Toast.LENGTH_SHORT).show();
             edtUsername.setFocusable(true);
         }
 
     }
 
-    //GET DATABASE
     public SQLiteDatabase getDatabase() {
         SQLiteDatabase database = null;
         try {
@@ -83,8 +82,8 @@ public class MainActivity extends AppCompatActivity {
             contentValues.clear();
 
             database.execSQL(Database.getInstance().scriptTableTables());
-            for (int i=1; i<=10; i++) {
-                contentValues.put("Table_Status", 1);
+            for (int i = 1; i <= 10; i++) {
+                contentValues.put("Table_Status", 0);
                 database.insert(Database.getInstance().TBTABLES, null, contentValues);
                 contentValues.clear();
             }
@@ -115,10 +114,12 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
-    public boolean isLogin(String username, String pass){
-        Cursor cursor = _DATABASE.rawQuery("SELECT * FROM " + Database.getInstance().TBUSERS
-                + " where User_Name = '"+username+"' and User_Pass = '"+pass+"'", null);
-        cursor.moveToFirst();
-        return cursor.getCount()>0 ? true : false;
+    public boolean isLogin(String username, String pass) {
+        int count;
+        Cursor cursor = _DATABASE.query(Database.getInstance().TBUSERS, null, "User_Name=? and User_Pass=?"
+                , new String[]{username, pass}, null, null, null);
+        count = cursor.getCount();
+        cursor.close();
+        return count > 0 ? true : false;
     }
 }

@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -21,7 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 public class activity_choose_table extends AppCompatActivity {
-
+    ArrayList<Table> listTable;
     private GridView gridView;
     private RadioGroup rgFilter;
     Context context;
@@ -36,9 +37,11 @@ public class activity_choose_table extends AppCompatActivity {
         actionBar.setHomeAsUpIndicator(R.drawable.back_icon);
         //actionBar.setBackgroundDrawable(new ColorDrawable(Color.BLACK));
 
-        gridView = (GridView) findViewById(R.id.gridView);
-        loadList("SELECT * FROM " + Database.getInstance().TBTABLES);
+        listTable = new ArrayList<>();
 
+        gridView = (GridView) findViewById(R.id.gridView);
+        //type 0: còn trống, 1: đã có người ngồi còn lại là tất cả
+        loadList(2);
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -66,37 +69,43 @@ public class activity_choose_table extends AppCompatActivity {
         }
     }
 
-    public ArrayList<Table> loadTable(String query) {
-        ArrayList<Table> listTable = new ArrayList<>();
-        Cursor cursor = MainActivity._DATABASE.rawQuery(query, null);
+    public void Filter(View view) {
+        switch (rgFilter.getCheckedRadioButtonId()) {
+            case R.id.rbNull:
+                loadList(0);
+                break;
+            case R.id.rbNotNull:
+                loadList(1);
+                break;
+            default:
+                loadList(2);
+                break;
+        }
+    }
+
+    public void loadList(int type) {
+        listTable.clear();
+        Cursor cursor;
+        switch (type) {
+            case 0:
+                cursor = MainActivity._DATABASE.query(Database.getInstance().TBTABLES,
+                        null, "Table_Status=?", new String[]{"0"}, null, null, null);
+                break;
+            case 1:
+                cursor = MainActivity._DATABASE.query(Database.getInstance().TBTABLES,
+                        null, "Table_Status=?", new String[]{"1"}, null, null, null);
+                break;
+            default:
+                cursor = MainActivity._DATABASE.query(Database.getInstance().TBTABLES,
+                        null, null, null, null, null, null);
+                break;
+        }
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             listTable.add(new Table(cursor.getInt(0), cursor.getInt(1)));
             cursor.moveToNext();
         }
         cursor.close();
-        return listTable;
-    }
-
-    public void Filter(View view) {
-        Toast.makeText(this, rgFilter.getCheckedRadioButtonId() + "", Toast.LENGTH_SHORT).show();
-        String query = "";
-        switch (rgFilter.getCheckedRadioButtonId()){
-            case R.id.rbNull:
-                query = "SELECT * FROM " + Database.getInstance().TBTABLES +  " WHERE Table_Status = 0";
-                break;
-            case R.id.rbNotNull:
-                query = "SELECT * FROM " + Database.getInstance().TBTABLES +  " WHERE Table_Status = 1";
-                break;
-            default:
-                query = "SELECT * FROM " + Database.getInstance().TBTABLES;
-                break;
-        }
-        loadList(query);
-    }
-
-    public void loadList(String query){
-        ArrayList<Table> listTable = loadTable(query);
         TableAdapter tableAdapter = new TableAdapter(listTable);
         gridView.setAdapter(tableAdapter);
     }
