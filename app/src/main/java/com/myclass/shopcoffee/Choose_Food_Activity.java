@@ -32,6 +32,7 @@ public class Choose_Food_Activity extends AppCompatActivity implements FoodInter
 
     private void initializeViews() {
         Toast.makeText(this, "id table: "+idTable, Toast.LENGTH_SHORT).show();
+        textView.setText("Bàn số " +idTable);
         mySpinner = findViewById(R.id.spinner1);
         mySpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, categories));
 
