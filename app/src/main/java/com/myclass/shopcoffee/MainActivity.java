@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         if (isLogin(edtUsername.getText().toString(), edtPassword.getText().toString())) {
             Toast.makeText(this, "Login successfuly ", Toast.LENGTH_SHORT).show();
 
-            Intent intent = new Intent(this, activity_choose_table.class);
+            Intent intent = new Intent(this, MenuActivity.class);
             startActivity(intent);
         } else {
             Toast.makeText(this, "Sai thông tin vui lòng kiểm tra lại", Toast.LENGTH_SHORT).show();

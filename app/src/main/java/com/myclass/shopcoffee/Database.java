@@ -28,7 +28,7 @@ public class Database {
 
 
     public String scriptTableUsers() {
-        return "create table if not exists "+TBUSERS+" (User_Id integer primary key autoincrement, User_Name text, User_Pass text)";
+        return "create table if not exists "+TBUSERS+" (User_Id integer primary key autoincrement, User_Name text unique, User_Pass text)";
     }
 
     public String scriptTableTables() {

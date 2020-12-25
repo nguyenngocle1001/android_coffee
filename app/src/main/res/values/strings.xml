@@ -4,4 +4,8 @@
     <string name="btnExit">Thoát</string>
     <string name="txtUsername">Tên đăng nhập</string>
     <string name="txtPassword">Mật khẩu</string>
+    <string name="btnChooseTable">Chọn bàn</string>
+    <string name="btnInputData">Thêm tài khoản</string>
+    <string name="btnPay">Thanh toán</string>
+    <string name="txtHi">Chào các bạn đến với cửa hàng</string>
 </resources>
