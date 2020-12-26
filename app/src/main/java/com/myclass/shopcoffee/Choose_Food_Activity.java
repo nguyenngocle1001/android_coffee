@@ -3,6 +3,7 @@ package com.myclass.shopcoffee;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -68,22 +69,50 @@ public class Choose_Food_Activity extends AppCompatActivity implements FoodInter
     private ArrayList<Food> getFoodBodies() {
         ArrayList<Food> data = new ArrayList<>();
         data.clear();
-        data.add(new Food(1,"BẠC SỈU", "32000", 1, R.drawable.bacsiu));
-        data.add(new Food(2,"CÀ PHÊ ĐEN", "32000", 1, R.drawable.cfden));
-        data.add(new Food(3,"CÀ PHÊ SỮA ĐÁ", "32000", 1, R.drawable.cfsuada));
-        data.add(new Food(4,"CAPPUCCINO", "45000", 1, R.drawable.cappuccino));
-        data.add(new Food(5,"CARAMEL MACCHIATO", "55000", 1, R.drawable.caramel));
-        data.add(new Food(6,"ESPRESSO", "35000", 1, R.drawable.espresso));
-        data.add(new Food(7,"LATTE", "45000", 1, R.drawable.latte));
-        data.add(new Food(8,"MOCHA", "49000", 1, R.drawable.mocha));
-        data.add(new Food(9,"BÁNH MÌ CHÀ BÔNG PHÔ MAI", "32000", 2, R.drawable.phomaichabong));
-        data.add(new Food(10,"BÁNH MÌ QUE", "12000", 2, R.drawable.banhmyque));
-        data.add(new Food(11,"BÔNG LAN TRỨNG MUỐI", "29000", 2, R.drawable.bonglan));
-        data.add(new Food(12,"CROISSANT TRỨNG MUỐI", "35000", 2, R.drawable.croissant));
-        data.add(new Food(13,"MOCHI KEM CHOCOLATE", "19000", 2, R.drawable.mochichoco));
-        data.add(new Food(14,"MOCHI KEM MATCHA", "19000", 2, R.drawable.mochimatcha));
-        data.add(new Food(15,"MOCHI KEM XOÀI", "19000", 2, R.drawable.mochimango));
-        data.add(new Food(16,"MOUSSE GẤU CHOCOLATE", "39000", 2, R.drawable.moussegau));
+
+        Cursor cursor;
+
+        cursor = MainActivity._DATABASE.query(Database.getInstance().TBPRODUCTS,
+                null, null, null, null, null, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Food f = new Food();
+            f.setId(cursor.getInt(0));
+            f.setName(cursor.getString(1));
+            f.setPrice(cursor.getString(2));
+            f.setCategoryID(cursor.getInt(3));
+            f.setImage(cursor.getInt(4));
+            data.add(f);
+        }
+        cursor.close();
+
+
+//        String myText = "R.drawable.bacsiu";
+//        int a = 0;
+//        try {
+//            a  = Integer.parseInt(myText);
+//        } catch(NumberFormatException nfe) {
+//            System.out.println("Could not parse " + nfe);
+//        }
+//        data.add(new Food(1,"BẠC SỈU", "32000", 1, R.drawable.bacsiu));
+//        data.add(new Food(2,"CÀ PHÊ ĐEN", "32000", 1, R.drawable.cfden));
+//        data.add(new Food(3,"CÀ PHÊ SỮA ĐÁ", "32000", 1, R.drawable.cfsuada));
+//        data.add(new Food(4,"CAPPUCCINO", "45000", 1, R.drawable.cappuccino));
+//        data.add(new Food(5,"CARAMEL MACCHIATO", "55000", 1, R.drawable.caramel));
+//        data.add(new Food(6,"ESPRESSO", "35000", 1, R.drawable.espresso));
+//        data.add(new Food(7,"LATTE", "45000", 1, R.drawable.latte));
+//        data.add(new Food(8,"MOCHA", "49000", 1, R.drawable.mocha));
+//        data.add(new Food(9,"BÁNH MÌ CHÀ BÔNG PHÔ MAI", "32000", 2, R.drawable.phomaichabong));
+//        data.add(new Food(10,"BÁNH MÌ QUE", "12000", 2, R.drawable.banhmyque));
+//        data.add(new Food(11,"BÔNG LAN TRỨNG MUỐI", "29000", 2, R.drawable.bonglan));
+//        data.add(new Food(12,"CROISSANT TRỨNG MUỐI", "35000", 2, R.drawable.croissant));
+//        data.add(new Food(13,"MOCHI KEM CHOCOLATE", "19000", 2, R.drawable.mochichoco));
+//        data.add(new Food(14,"MOCHI KEM MATCHA", "19000", 2, R.drawable.mochimatcha));
+//        data.add(new Food(15,"MOCHI KEM XOÀI", "19000", 2, R.drawable.mochimango));
+//        data.add(new Food(16,"MOUSSE GẤU CHOCOLATE", "39000", 2, R.drawable.moussegau));
+
+
+
         return data;
     }
 

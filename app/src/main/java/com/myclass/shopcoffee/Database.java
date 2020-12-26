@@ -2,6 +2,7 @@ package com.myclass.shopcoffee;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
@@ -27,6 +28,8 @@ public class Database {
     public final String TBBILLDETAILS = "Bill_Details";
 
 
+
+
     public String scriptTableUsers() {
         return "create table if not exists "+TBUSERS+" (User_Id integer primary key autoincrement, User_Name text, User_Pass text)";
     }
@@ -46,8 +49,8 @@ public class Database {
         return "CREATE TABLE IF NOT EXISTS " + TBPRODUCTS + "(" +
                 "Product_Id integer primary key autoincrement," +
                 "Product_Name text," +
-                "Product_Price double," +
-                "Product_Description text," +
+                "Product_Price real," +
+                "Cate integer references Categorys(Category_Id)"+
                 "Product_Image text" +
                 ")";
     }
@@ -57,7 +60,7 @@ public class Database {
                 "Bill_Id integer primary key autoincrement," +
                 "Table_Id integer references Tables(Table_Id)," +
                 "Bill_Status bit," +
-                "Bill_Price double)";
+                "Bill_Price real)";
     }
 
     public String scriptTableBillDetails() {

@@ -46,6 +46,9 @@ public class Food {
         this.image = image;
     }
 
+    public Food(){
+    }
+
     public Food(int id, String name, String price, int categotyId, int image){
         this.id=id;
         this.name=name;
