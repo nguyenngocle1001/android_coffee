@@ -50,8 +50,8 @@ public class Database {
                 "Product_Id integer primary key autoincrement," +
                 "Product_Name text," +
                 "Product_Price real," +
-                "Cate integer references Categorys(Category_Id)"+
-                "Product_Image text" +
+                "Cate integer references Categorys(Category_Id),"+
+                "Product_Image integer" +
                 ")";
     }
 
@@ -59,8 +59,8 @@ public class Database {
         return "CREATE TABLE IF NOT EXISTS " + TBBILLS + "(" +
                 "Bill_Id integer primary key autoincrement," +
                 "Table_Id integer references Tables(Table_Id)," +
-                "Bill_Status bit," +
-                "Bill_Price real)";
+                "Bill_Status bit" +
+                ")";
     }
 
     public String scriptTableBillDetails() {

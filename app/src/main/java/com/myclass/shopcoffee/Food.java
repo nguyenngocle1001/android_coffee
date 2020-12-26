@@ -3,7 +3,7 @@ package com.myclass.shopcoffee;
 public class Food {
     private int id;
     private String name;
-    private String price;
+    private float price;
     private int categoryID;
     private int image;
 
@@ -16,7 +16,7 @@ public class Food {
     public String getName() {
         return name;
     }
-    public String getPrice() {
+    public float getPrice() {
         return price;
     }
     public int getCategotuID() {
@@ -34,7 +34,7 @@ public class Food {
         this.name = name;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
@@ -49,7 +49,7 @@ public class Food {
     public Food(){
     }
 
-    public Food(int id, String name, String price, int categotyId, int image){
+    public Food(int id, String name, float price, int categotyId, int image){
         this.id=id;
         this.name=name;
         this.price=price;

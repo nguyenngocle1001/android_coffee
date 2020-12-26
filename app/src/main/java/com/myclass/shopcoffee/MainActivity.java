@@ -103,119 +103,119 @@ public class MainActivity extends AppCompatActivity {
             contentValues.put("Product_Name","BẠC SỈU");
             contentValues.put("Product_Price", 32000);
             contentValues.put("Cate", 1);
-            contentValues.put("Product_Image","bacsiu");
+            contentValues.put("Product_Image",R.drawable.bacsiu);
             database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
             contentValues.clear();
 
-//            contentValues.put("Product_Name","CÀ PHÊ ĐEN");
-//            contentValues.put("Product_Price",32000);
-//            contentValues.put("Cate_id",1);
-//            contentValues.put("Product_Image",R.drawable.cfden);
-//
-//            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
-//            contentValues.clear();
-//
-//            contentValues.put("Product_Name","CÀ PHÊ SỮA ĐÁ");
-//            contentValues.put("Product_Price",32000);
-//            contentValues.put("Product_Image",R.drawable.cfsuada);
-//            contentValues.put("Cate_id",1);
-//            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
-//            contentValues.clear();
-//
-//            contentValues.put("Product_Name","CAPPUCCINO");
-//            contentValues.put("Product_Price",45000);
-//            contentValues.put("Product_Image",R.drawable.cappuccino);
-//            contentValues.put("Cate_id",1);
-//            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
-//            contentValues.clear();
-//
-//            contentValues.put("Product_Name","CARAMEL MACCHIATO");
-//            contentValues.put("Product_Price",55000);
-//            contentValues.put("Product_Image",R.drawable.caramel);
-//            contentValues.put("Cate_id",1);
-//            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
-//            contentValues.clear();
-//
-//            contentValues.put("Product_Name","ESPRESSO");
-//            contentValues.put("Product_Price",35000);
-//            contentValues.put("Product_Image",R.drawable.espresso);
-//            contentValues.put("Cate_id",1);
-//            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
-//            contentValues.clear();
-//
-//            contentValues.put("Product_Name","LATTE");
-//            contentValues.put("Product_Price",45000);
-//            contentValues.put("Product_Image",R.drawable.latte);
-//            contentValues.put("Cate_id",1);
-//            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
-//            contentValues.clear();
-//
-//            contentValues.put("Product_Name","MOCHA");
-//            contentValues.put("Product_Price",49000);
-//            contentValues.put("Product_Image","R.drawable.mocha");
-//            contentValues.put("Cate_id",1);
-//            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
-//            contentValues.clear();
-//
-//            contentValues.put("Product_Name","BÁNH MÌ CHÀ BÔNG PHÔ MAI");
-//            contentValues.put("Product_Price",32000);
-//            contentValues.put("Product_Image","R.drawable.phomaichabong");
-//            contentValues.put("Cate_id",2);
-//            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
-//            contentValues.clear();
-//
-//            contentValues.put("Product_Name","BÁNH MÌ QUE");
-//            contentValues.put("Product_Price",12000);
-//            contentValues.put("Product_Image","R.drawable.banhmyque");
-//            contentValues.put("Cate_id",2);
-//            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
-//            contentValues.clear();
-//
-//            contentValues.put("Product_Name","BÔNG LAN TRỨNG MUỐI");
-//            contentValues.put("Product_Price",29000);
-//            contentValues.put("Product_Image","R.drawable.bonglan");
-//            contentValues.put("Cate_id",2);
-//            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
-//            contentValues.clear();
-//
-//            contentValues.put("Product_Name","CROISSANT TRỨNG MUỐI");
-//            contentValues.put("Product_Price",35000);
-//            contentValues.put("Product_Image","R.drawable.croissant");
-//            contentValues.put("Cate_id",2);
-//            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
-//            contentValues.clear();
-//
-//            contentValues.put("Product_Name","MOCHI KEM CHOCOLATE");
-//            contentValues.put("Product_Price",19000);
-//            contentValues.put("Product_Image","R.drawable.mochichoco");
-//            contentValues.put("Cate_id",2);
-//            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
-//            contentValues.clear();
-//
-//            contentValues.put("Product_Name","MOCHI KEM MATCHA");
-//            contentValues.put("Product_Price",19000);
-//            contentValues.put("Product_Image","R.drawable.mochimatcha");
-//            contentValues.put("Cate_id",2);
-//            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
-//            contentValues.clear();
-//
-//            contentValues.put("Product_Name","MOCHI KEM XOÀI");
-//            contentValues.put("Product_Price",19000);
-//            contentValues.put("Product_Image","R.drawable.mochimango");
-//            contentValues.put("Cate_id",2);
-//            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
-//            contentValues.clear();
-//
-//            contentValues.put("Product_Name","MOUSSE GẤU CHOCOLATE");
-//            contentValues.put("Product_Price",39000);
-//            contentValues.put("Product_Image","R.drawable.moussegau");
-//            contentValues.put("Cate_id",2);
-//            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
-//            contentValues.clear();
-//
-//
-//            database.execSQL(Database.getInstance().scriptTableBills());
-//            database.execSQL(Database.getInstance().scriptTableBillDetails());
+            contentValues.put("Product_Name","CÀ PHÊ ĐEN");
+            contentValues.put("Product_Price",32000);
+            contentValues.put("Cate",1);
+            contentValues.put("Product_Image",R.drawable.cfden);
+
+            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
+            contentValues.clear();
+
+            contentValues.put("Product_Name","CÀ PHÊ SỮA ĐÁ");
+            contentValues.put("Product_Price",32000);
+            contentValues.put("Cate",1);
+            contentValues.put("Product_Image",R.drawable.cfsuada);
+            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
+            contentValues.clear();
+
+            contentValues.put("Product_Name","CAPPUCCINO");
+            contentValues.put("Product_Price",45000);
+            contentValues.put("Product_Image",R.drawable.cappuccino);
+            contentValues.put("Cate",1);
+            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
+            contentValues.clear();
+
+            contentValues.put("Product_Name","CARAMEL MACCHIATO");
+            contentValues.put("Product_Price",55000);
+            contentValues.put("Product_Image",R.drawable.caramel);
+            contentValues.put("Cate",1);
+            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
+            contentValues.clear();
+
+            contentValues.put("Product_Name","ESPRESSO");
+            contentValues.put("Product_Price",35000);
+            contentValues.put("Product_Image",R.drawable.espresso);
+            contentValues.put("Cate",1);
+            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
+            contentValues.clear();
+
+            contentValues.put("Product_Name","LATTE");
+            contentValues.put("Product_Price",45000);
+            contentValues.put("Product_Image",R.drawable.latte);
+            contentValues.put("Cate",1);
+            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
+            contentValues.clear();
+
+            contentValues.put("Product_Name","MOCHA");
+            contentValues.put("Product_Price",49000);
+            contentValues.put("Product_Image",R.drawable.mocha);
+            contentValues.put("Cate",1);
+            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
+            contentValues.clear();
+
+            contentValues.put("Product_Name","BÁNH MÌ CHÀ BÔNG PHÔ MAI");
+            contentValues.put("Product_Price",32000);
+            contentValues.put("Product_Image",R.drawable.phomaichabong);
+            contentValues.put("Cate",2);
+            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
+            contentValues.clear();
+
+            contentValues.put("Product_Name","BÁNH MÌ QUE");
+            contentValues.put("Product_Price",12000);
+            contentValues.put("Product_Image",R.drawable.banhmyque);
+            contentValues.put("Cate",2);
+            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
+            contentValues.clear();
+
+            contentValues.put("Product_Name","BÔNG LAN TRỨNG MUỐI");
+            contentValues.put("Product_Price",29000);
+            contentValues.put("Product_Image",R.drawable.bonglan);
+            contentValues.put("Cate",2);
+            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
+            contentValues.clear();
+
+            contentValues.put("Product_Name","CROISSANT TRỨNG MUỐI");
+            contentValues.put("Product_Price",35000);
+            contentValues.put("Product_Image",R.drawable.croissant);
+            contentValues.put("Cate",2);
+            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
+            contentValues.clear();
+
+            contentValues.put("Product_Name","MOCHI KEM CHOCOLATE");
+            contentValues.put("Product_Price",19000);
+            contentValues.put("Product_Image",R.drawable.mochichoco);
+            contentValues.put("Cate",2);
+            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
+            contentValues.clear();
+
+            contentValues.put("Product_Name","MOCHI KEM MATCHA");
+            contentValues.put("Product_Price",19000);
+            contentValues.put("Product_Image",R.drawable.mochimatcha);
+            contentValues.put("Cate",2);
+            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
+            contentValues.clear();
+
+            contentValues.put("Product_Name","MOCHI KEM XOÀI");
+            contentValues.put("Product_Price",19000);
+            contentValues.put("Product_Image",R.drawable.mochimango);
+            contentValues.put("Cate_id",2);
+            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
+            contentValues.clear();
+
+            contentValues.put("Product_Name","MOUSSE GẤU CHOCOLATE");
+            contentValues.put("Product_Price",39000);
+            contentValues.put("Product_Image",R.drawable.moussegau);
+            contentValues.put("Cate_id",2);
+            database.insert(Database.getInstance().TBPRODUCTS, null, contentValues);
+            contentValues.clear();
+
+
+            database.execSQL(Database.getInstance().scriptTableBills());
+            database.execSQL(Database.getInstance().scriptTableBillDetails());
 
         } catch (Exception e) {
             Toast.makeText(this, "Lỗi", Toast.LENGTH_SHORT).show();

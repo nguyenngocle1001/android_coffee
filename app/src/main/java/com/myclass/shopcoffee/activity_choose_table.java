@@ -35,7 +35,6 @@ public class activity_choose_table extends AppCompatActivity {
         actionBar.setTitle(Html.fromHtml("<span style='color: #ffffff'>Chọn bàn<span>", Html.FROM_HTML_MODE_COMPACT));
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.back_icon);
-        //actionBar.setBackgroundDrawable(new ColorDrawable(Color.BLACK));
 
         listTable = new ArrayList<>();
 
@@ -50,6 +49,7 @@ public class activity_choose_table extends AppCompatActivity {
                 final Intent intent;
                 intent = new Intent(activity_choose_table.this, Choose_Food_Activity.class);
                 Choose_Food_Activity.idTable = listTable.get(position).id;
+                Choose_Food_Activity.statusTable = 1;
                 startActivity(intent);
 
             }

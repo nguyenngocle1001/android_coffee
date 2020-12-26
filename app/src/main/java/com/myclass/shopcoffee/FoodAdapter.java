@@ -17,10 +17,10 @@ import java.util.List;
 
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder> {
 
-    private List<Food> foods;
+    private ArrayList<Food> foods;
     private FoodInterFace foodInterFace;
 
-    public FoodAdapter(List<Food> foods, FoodInterFace foodInterFace) {
+    public FoodAdapter(ArrayList<Food> foods, FoodInterFace foodInterFace) {
         this.foods = foods;
         this.foodInterFace = foodInterFace;
     }
@@ -47,7 +47,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         return foods.size();
     }
 
-    public List<Food> getSelectedFood(){
+    public ArrayList<Food> getSelectedFood(){
         ArrayList<Food> selectedFood = new ArrayList<>();
         for(Food food: foods){
             if(food.isSelect){
@@ -78,7 +78,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         void bindFood(final Food food){
             imageFood.setImageResource(food.getImage());
             textName.setText(food.getName());
-            textPrice.setText(food.getPrice());
+            textPrice.setText(Float.toString(food.getPrice()));
             if(food.isSelect){
                 viewBackground.setBackgroundResource(R.drawable.food_selected_background);
                 imageSelected.setVisibility(View.VISIBLE);
